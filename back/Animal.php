@@ -3,11 +3,11 @@
   class Animal {
 
     public function __construct(
-            public string $couleur,
-            public string $type, 
-            public string $nom,
-            public int $age,
-            public bool $adopte
+             string $couleur,
+             string $type, 
+             string $nom,
+             int $age,
+             bool $adopte
     ){}
 
     public function __toString()
