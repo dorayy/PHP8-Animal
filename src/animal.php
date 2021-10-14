@@ -1,11 +1,16 @@
 <?php
+require('../back/AnimalManager.php');
 
+$animals = getall();
+
+print_r($animals);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Animals</title>
+    <title>Bootstrap 4 Website Example</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -24,11 +29,11 @@
   </head>
   <body>
     <div class="jumbotron text-center" style="margin-bottom: 0">
-      <h1>Page d'accueil Animal</h1>
+      <h1>Nos Animaux</h1>
     </div>
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-      <a class="navbar-brand" href="#">Home</a>
+      <a class="navbar-brand" href="../index.php">Home</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -40,7 +45,7 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="src/animal.php">Nos Animaux</a>
+            <a class="nav-link" href="#">Nos Animaux</a>
           </li>
         </ul>
       </div>
@@ -48,13 +53,28 @@
 
     <div class="container" style="margin-top: 30px">
       <div class="row">
-        <div class="col-sm-4">
-            <h2>TITLE HEADING</h2>
+        <div class="col-sm-12">
+        <h1>Animals list</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nom</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php while($animals) : ?>
+            <tr>
+              <td><?php echo htmlspecialchars($animals[0]); ?></td>
+              <td><?php echo htmlspecialchars($animals[2]); ?></td>
+            </tr>
+            <?php endwhile; ?>
+          </tbody>
+        </table>
         </div>
-        <div class="col-sm-8">
-          <h2>TITLE HEADING</h2>
 
       </div>
+    </div>
     </div>
 
     <div class="jumbotron text-center" style="position: fixed;

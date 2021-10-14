@@ -36,3 +36,25 @@ try {
 	echo $e->getMessage();
 }
 }
+
+function getAll(){
+    require('config.php');
+
+    $dsn = "mysql:host=$host;dbname=$db;charset=UTF8";
+
+try {
+	$pdo = new PDO($dsn, $user, $password);
+
+	if ($pdo) {
+        $sql = "SELECT * FROM animal";
+        $stmt= $pdo->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $result;
+	}
+} catch (PDOException $e) {
+	echo $e->getMessage();
+}
+
+}
