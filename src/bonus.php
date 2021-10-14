@@ -5,10 +5,10 @@
 $age = 17;
 
 $result = match (true) {
-    $age >= 65 => 'senior',
-    $age >= 25 => 'adult',
-    $age >= 18 => 'young adult',
-    default => 'kid',
+    $age >= 70 => 'Ancien',
+    $age >= 27 => 'Adulte',
+    $age >= 18 => 'Jeunes',
+    default => 'Enfants',
 };
 
 var_dump($result);
