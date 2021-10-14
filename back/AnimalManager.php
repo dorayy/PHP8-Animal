@@ -11,6 +11,7 @@ insert("Violet","Mangouste","Jerem",1);
 insert("Noir","Manchot","Ele",3);
 */
 
+// insert to the table animal
 function insert(string $couleur,string $type, string $nom, int $age){
     require('Animal.php');
     require('config.php');
@@ -37,6 +38,7 @@ try {
 }
 }
 
+// get all information from the table animal and return it to an array
 function getAll(){
     require('config.php');
 
@@ -56,5 +58,25 @@ try {
 } catch (PDOException $e) {
 	echo $e->getMessage();
 }
+}
+// get the 10 last animal and return it to an array
+function getLast10(){
+    require('config.php');
 
+    $dsn = "mysql:host=$host;dbname=$db;charset=UTF8";
+
+try {
+	$pdo = new PDO($dsn, $user, $password);
+
+	if ($pdo) {
+        $sql = "SELECT * FROM animal ORDER BY id DESC LIMIT 10";
+        $stmt= $pdo->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $result;
+	}
+} catch (PDOException $e) {
+	echo $e->getMessage();
+}   
 }

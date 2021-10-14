@@ -1,9 +1,6 @@
 <?php
 require('../back/AnimalManager.php');
-
 $animals = getall();
-
-print_r($animals);
 ?>
 
 
@@ -52,39 +49,21 @@ print_r($animals);
     </nav>
 
     <div class="container" style="margin-top: 30px">
-      <div class="row">
-        <div class="col-sm-12">
-        <h1>Animals list</h1>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nom</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php while($animals) : ?>
-            <tr>
-              <td><?php echo htmlspecialchars($animals[0]); ?></td>
-              <td><?php echo htmlspecialchars($animals[2]); ?></td>
-            </tr>
-            <?php endwhile; ?>
-          </tbody>
-        </table>
+       <div class="row">
+          <div class="col-sm-6">
+            <h1>Animals list</h1>
+            <?php foreach ($animals as $animals){ ?>
+              <div class="card bg-light mb-3" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title"><?php echo htmlspecialchars($animals["nom"]); ?></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Age : <?php echo htmlspecialchars($animals["age"]); ?></h6>
+                    <p class="card-text">Type : <?php echo htmlspecialchars($animals["type"]); ?> </p>
+                    <p class="card-text">Couleur : <?php echo htmlspecialchars($animals["couleur"]); ?></p>
+                  </div>
+              </div>
+            <?php } ?>
         </div>
-
       </div>
-    </div>
-    </div>
-
-    <div class="jumbotron text-center" style="position: fixed;
-        height: 50px;
-        background-color: grey;
-        bottom: 0px;
-        left: 0px;
-        right: 0px;
-        margin-bottom: 0px;">
-      <p>Animals</p>
     </div>
   </body>
 </html>

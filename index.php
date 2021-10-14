@@ -1,5 +1,6 @@
 <?php
-
+require('./back/AnimalManager.php');
+$animals = getLast10();
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +25,7 @@
   </head>
   <body>
     <div class="jumbotron text-center" style="margin-bottom: 0">
-      <h1>Page d'accueil Animal</h1>
+      <h1>Les Nouveaux arrivants</h1>
     </div>
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -47,24 +48,23 @@
     </nav>
 
     <div class="container" style="margin-top: 30px">
-      <div class="row">
-        <div class="col-sm-4">
-            <h2>TITLE HEADING</h2>
+       <div class="row">
+          <div class="col-sm-6">
+            <h1>Animals list</h1>
+            <?php foreach ($animals as $animals){ ?>
+              <div class="card bg-light mb-3" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title"><?php echo htmlspecialchars($animals["nom"]); ?></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Age : <?php echo htmlspecialchars($animals["age"]); ?></h6>
+                    <p class="card-text">Type : <?php echo htmlspecialchars($animals["type"]); ?> </p>
+                    <p class="card-text">Couleur : <?php echo htmlspecialchars($animals["couleur"]); ?></p>
+                  </div>
+              </div>
+            <?php } ?>
         </div>
-        <div class="col-sm-8">
-          <h2>TITLE HEADING</h2>
-
       </div>
     </div>
 
-    <div class="jumbotron text-center" style="position: fixed;
-        height: 50px;
-        background-color: grey;
-        bottom: 0px;
-        left: 0px;
-        right: 0px;
-        margin-bottom: 0px;">
-      <p>Animals</p>
-    </div>
+
   </body>
 </html>
