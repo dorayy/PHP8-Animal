@@ -1,3 +1,4 @@
 <?php
+require('AnimalManager.php');
 
-echo "Coucou";
+
