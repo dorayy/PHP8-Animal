@@ -2,4 +2,5 @@
 
 Lancement projet :
 
+cd back
 php -S localhost:8000

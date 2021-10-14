@@ -1,12 +1,13 @@
 <?php
 
- class Animal {
+  class Animal {
 
     public function __construct(
             public string $couleur,
             public string $type, 
             public string $nom,
-            public int $age
+            public int $age,
+            public bool $adopte
     ){}
 
     public function __toString()
@@ -28,6 +29,14 @@
 
     public function getAge(){
         return $this->age;
+    }
+
+    public function getAdopte(){
+        return $this->adopte;
+    }
+
+    public function setAdopte($adopte){
+        $this->adopte = $adopte;
     }
 
     public function setCouleur($couleur){

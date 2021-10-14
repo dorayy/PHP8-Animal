@@ -1,23 +1,12 @@
 <?php
 
-
-/*
-Jeu de données : a exécuté un par un
-
-insert("Jaune","Aigle","Lucie",1);
-insert("Vert","Babouin","Fred",3);
-insert("Orange","Tigre","Luc",2);
-insert("Violet","Mangouste","Jerem",1);
-insert("Noir","Manchot","Ele",3);
-*/
-
 // insert to the table animal
 function insert(string $couleur,string $type, string $nom, int $age){
     require('Animal.php');
     require('config.php');
 
     $dsn = "mysql:host=$host;dbname=$db;charset=UTF8";
-    $chien = new Animal($couleur,$type,$nom,$age);
+    $chien = new Animal($couleur,$type,$nom,$age,false);
 try {
 	$pdo = new PDO($dsn, $user, $password);
 
@@ -28,8 +17,9 @@ try {
             'type' => $chien->getType(),
             'nom' => $chien->getNom(),
             'age' => $chien->getAge(),
+            'adopte' => "false"
         ];
-        $sql = "INSERT INTO Animal (`couleur`, `type`, `nom`, `age`) VALUES (:couleur, :type, :nom, :age)";
+        $sql = "INSERT INTO Animal (`couleur`, `type`, `nom`, `age` , `adopte`) VALUES (:couleur, :type, :nom, :age, :adopte)";
         $stmt= $pdo->prepare($sql);
         $stmt->execute($data);
 	}
@@ -48,7 +38,7 @@ try {
 	$pdo = new PDO($dsn, $user, $password);
 
 	if ($pdo) {
-        $sql = "SELECT * FROM animal";
+        $sql = "SELECT * FROM animal WHERE adopte = false";
         $stmt= $pdo->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -69,7 +59,7 @@ try {
 	$pdo = new PDO($dsn, $user, $password);
 
 	if ($pdo) {
-        $sql = "SELECT * FROM animal ORDER BY id DESC LIMIT 10";
+        $sql = "SELECT * FROM animal WHERE adopte = false ORDER BY id DESC LIMIT 10";
         $stmt= $pdo->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

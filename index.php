@@ -51,13 +51,13 @@ $animals = getLast10();
        <div class="row">
           <div class="col-sm-6">
             <h1>Animals list</h1>
-            <?php foreach ($animals as $animals){ ?>
+            <?php foreach ($animals as $a){ ?>
               <div class="card bg-light mb-3" style="width: 18rem;">
                   <div class="card-body">
-                    <h5 class="card-title"><?php echo htmlspecialchars($animals["nom"]); ?></h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Age : <?php echo htmlspecialchars($animals["age"]); ?></h6>
-                    <p class="card-text">Type : <?php echo htmlspecialchars($animals["type"]); ?> </p>
-                    <p class="card-text">Couleur : <?php echo htmlspecialchars($animals["couleur"]); ?></p>
+                    <h5 class="card-title"><?php echo htmlspecialchars($a["nom"]); ?></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Age : <?php echo htmlspecialchars($a["age"]); ?></h6>
+                    <p class="card-text">Type : <?php echo htmlspecialchars($a["type"]); ?> </p>
+                    <p class="card-text">Couleur : <?php echo htmlspecialchars($a["couleur"]); ?></p>
                   </div>
               </div>
             <?php } ?>
